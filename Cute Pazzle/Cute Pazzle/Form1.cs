@@ -19,6 +19,7 @@ namespace Cute_Pazzle
             levels.Scroll += levelsScroll;
         }
         private DateTime levelTime;
+        private int actionCounts;
         private void levelsScroll(object sender, EventArgs e)
         {
             switch (levels.Value)
@@ -26,22 +27,32 @@ namespace Cute_Pazzle
                 case 0:
                     levelName.Text = "Низкий";
                     counter.Text = "1000";
-                    levelTime = DateTime.Now.AddMinutes(20);
+                    actionCounts = 1000;
+                    levelTime = DateTime.Now.AddSeconds(1000);
                     break;
                 case 1:
                     levelName.Text = String.Format("Средний");
                     counter.Text = "400";
-                    levelTime = DateTime.Now.AddMinutes(15);
+                    actionCounts = 400;
+                    levelTime = DateTime.Now.AddSeconds(10);
                     break;
                 case 2:
                     levelName.Text = String.Format("Сложный");
                     counter.Text = "250";
-                    levelTime = DateTime.Now.AddMinutes(10);
+                    actionCounts = 250;
+                    levelTime = DateTime.Now.AddSeconds(500);
                     break;
             }
         }
+        private void GameOver()
+        {
+            if(actionCounts==0||levelTime== DateTime.MinValue)
+            {
+                GameOverForm newForm = new GameOverForm();
+                newForm.Show();
+            }
+        }
 
-#region
         private void timer1_Tick(object sender, EventArgs e)
         {
             var dateTime = DateTime.Now;
@@ -49,30 +60,14 @@ namespace Cute_Pazzle
             {
                 var timeSpan = (levelTime - dateTime);
 
-                label1.Text = string.Format("\r{0:00}:{1:00}:{2:00}", (int)timeSpan.TotalHours, (int)timeSpan.TotalMinutes,
-                                  (int)timeSpan.TotalSeconds);
-            }
-            else
-            {
-                button1_Click(null, EventArgs.Empty);
+                label1.Text = string.Format("\r{0:00}", (int)timeSpan.TotalSeconds);
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void startButton_Click(object sender, EventArgs e)
         {
-
-            if (!timer1.Enabled)
-            {
-                levelTime = DateTime.Now.AddMinutes(1);
-            }
-            timer1.Enabled = !timer1.Enabled;
-            button1.Text = timer1.Enabled ? "Stop" : "Start";
-        }
-        #endregion
-
-        private void startGame_Click(object sender, EventArgs e)
-        {
-
+            levels.Refresh();
+            timer1.Start();
         }
     }
     public class Timer
