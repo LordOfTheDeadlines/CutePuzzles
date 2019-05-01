@@ -46,16 +46,8 @@ namespace Cute_Pazzle
             }
         }
 
-        //Image image = Image.FromFile("C: \\image.jpg");
+        //Image image = Image.FromFile();
 
-        private void GameOver()
-        {
-            if(actionCounts==0||levelTime== DateTime.MinValue)
-            {
-                GameOverForm newForm = new GameOverForm();
-                newForm.Show();
-            }
-        }
 
         private void timer1_Tick(object sender, EventArgs e)//вынести в класс Timer
         {
@@ -73,7 +65,6 @@ namespace Cute_Pazzle
         Image[] images = null;
         // const int easyLevelNum = 4;
        
-
         private void startButton_Click(object sender, EventArgs e)
         {
             timer1.Start();
@@ -103,11 +94,31 @@ namespace Cute_Pazzle
             #endregion
 
         }
+
+        public void OnPuzzleClick(object sender, EventArgs e)
+        {
+
+        }
+        private void GameOver()
+        {
+            if (actionCounts == 0 || levelTime == DateTime.MinValue)
+            {
+                GameOverForm newForm = new GameOverForm();
+                newForm.Show();
+            }
+        }
+        private bool IsWin()
+        {
+            return false;
+        }
     }
 
     public class Bitmap
     {
+        private void CreateLevel()
+        {
 
+        }
         private Bitmap CreateBitmapImage(Image image)
         {
             Bitmap bitmap = new Bitmap();
