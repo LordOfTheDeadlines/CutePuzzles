@@ -18,9 +18,10 @@ namespace Cute_Pazzle
             InitializeComponent();
             levels.Scroll += levelsScroll;
         }
+       
         private DateTime levelTime;
         private int actionCounts;
-        private void levelsScroll(object sender, EventArgs e)
+        private void levelsScroll(object sender, EventArgs e)//установка уровня сложности
         {
             switch (levels.Value)
             {
@@ -31,19 +32,22 @@ namespace Cute_Pazzle
                     levelTime = DateTime.Now.AddSeconds(1000);
                     break;
                 case 1:
-                    levelName.Text = String.Format("Средний");
+                    levelName.Text = "Средний";
                     counter.Text = "400";
                     actionCounts = 400;
-                    levelTime = DateTime.Now.AddSeconds(10);
+                    levelTime = DateTime.Now.AddSeconds(750);
                     break;
                 case 2:
-                    levelName.Text = String.Format("Сложный");
+                    levelName.Text = "Сложный";
                     counter.Text = "250";
                     actionCounts = 250;
                     levelTime = DateTime.Now.AddSeconds(500);
                     break;
             }
         }
+
+        //Image image = Image.FromFile("C: \\image.jpg");
+
         private void GameOver()
         {
             if(actionCounts==0||levelTime== DateTime.MinValue)
@@ -53,7 +57,7 @@ namespace Cute_Pazzle
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)//вынести в класс Timer
         {
             var dateTime = DateTime.Now;
             if (dateTime < levelTime)
@@ -64,10 +68,55 @@ namespace Cute_Pazzle
             }
         }
 
+       
+        PictureBox[] picBoxes = null;
+        Image[] images = null;
+        // const int easyLevelNum = 4;
+       
+
         private void startButton_Click(object sender, EventArgs e)
         {
-            levels.Refresh();
             timer1.Start();
+            //ползунок должен стать недоступным для изменений  
+            int current = 4;//зависит от сложности
+         
+            #region вынести в класс Bitmap как метод
+            picBoxes = new PictureBox[current];
+            images = new Image[current];
+            int numRow = (int)Math.Sqrt(current);
+            int numColumn = numRow;
+            int unitX = puzzle.Width / numRow;
+            int unitY = puzzle.Height / numColumn;
+            int[] indexArr = new int[current];
+
+            for(int i=0;i<current;i++)
+            {
+                indexArr[i] = i;
+                if (picBoxes[i] == null) picBoxes[i] = new PictureBox();
+                picBoxes[i].Width = unitX;
+                picBoxes[i].Height = unitY;
+
+               // CreateBitmapImage();
+
+
+            }
+            #endregion
+
+        }
+    }
+
+    public class Bitmap
+    {
+
+        private Bitmap CreateBitmapImage(Image image)
+        {
+            Bitmap bitmap = new Bitmap();
+            return bitmap;
+        }
+
+        private void Random(int[] arr)//перемешивает кусочки пазла
+        {
+
         }
     }
     public class Timer

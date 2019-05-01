@@ -38,10 +38,9 @@
             this.levels = new System.Windows.Forms.TrackBar();
             this.label5 = new System.Windows.Forms.Label();
             this.levelName = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.puzzle = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.levels)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,15 +119,6 @@
             this.levelName.TabIndex = 11;
             this.levelName.Text = "Низкий";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::Cute_Pazzle.Properties.Resources.orig;
-            this.pictureBox1.Location = new System.Drawing.Point(35, 58);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(520, 520);
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Cute_Pazzle.Properties.Resources._75b53a69853253_5bbe0d80ddcb2;
@@ -139,12 +129,21 @@
             this.pictureBox2.TabIndex = 9;
             this.pictureBox2.TabStop = false;
             // 
+            // puzzle
+            // 
+            this.puzzle.Location = new System.Drawing.Point(34, 51);
+            this.puzzle.Name = "puzzle";
+            this.puzzle.Size = new System.Drawing.Size(520, 520);
+            this.puzzle.TabIndex = 12;
+            this.puzzle.TabStop = false;
+            this.puzzle.Text = "puzzle";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1062, 623);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.puzzle);
             this.Controls.Add(this.levelName);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.pictureBox2);
@@ -156,8 +155,8 @@
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
+           
             ((System.ComponentModel.ISupportInitialize)(this.levels)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -175,7 +174,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label levelName;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.GroupBox puzzle;
     }
 }
 
