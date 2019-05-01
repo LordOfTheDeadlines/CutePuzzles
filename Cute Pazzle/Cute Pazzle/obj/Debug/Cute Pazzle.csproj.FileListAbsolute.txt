@@ -1,0 +1,9 @@
+c:\users\acer\documents\visual studio 2015\Projects\Cute Pazzle\Cute Pazzle\bin\Debug\Cute Pazzle.exe.config
+c:\users\acer\documents\visual studio 2015\Projects\Cute Pazzle\Cute Pazzle\bin\Debug\Cute Pazzle.exe
+c:\users\acer\documents\visual studio 2015\Projects\Cute Pazzle\Cute Pazzle\bin\Debug\Cute Pazzle.pdb
+c:\users\acer\documents\visual studio 2015\Projects\Cute Pazzle\Cute Pazzle\obj\Debug\Cute_Pazzle.Form1.resources
+c:\users\acer\documents\visual studio 2015\Projects\Cute Pazzle\Cute Pazzle\obj\Debug\Cute_Pazzle.Properties.Resources.resources
+c:\users\acer\documents\visual studio 2015\Projects\Cute Pazzle\Cute Pazzle\obj\Debug\Cute Pazzle.csproj.GenerateResource.Cache
+c:\users\acer\documents\visual studio 2015\Projects\Cute Pazzle\Cute Pazzle\obj\Debug\Cute Pazzle.exe
+c:\users\acer\documents\visual studio 2015\Projects\Cute Pazzle\Cute Pazzle\obj\Debug\Cute Pazzle.pdb
+c:\users\acer\documents\visual studio 2015\Projects\Cute Pazzle\Cute Pazzle\obj\Debug\Cute Pazzle.csprojResolveAssemblyReference.cache
