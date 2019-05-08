@@ -40,13 +40,12 @@
             this.levelName = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.puzzle = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.gallery = new System.Windows.Forms.Button();
+            this.timerLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.levels)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // label1
             // 
@@ -79,9 +78,9 @@
             this.counter.AutoSize = true;
             this.counter.Location = new System.Drawing.Point(811, 451);
             this.counter.Name = "counter";
-            this.counter.Size = new System.Drawing.Size(32, 17);
+            this.counter.Size = new System.Drawing.Size(40, 17);
             this.counter.TabIndex = 6;
-            this.counter.Text = "100";
+            this.counter.Text = "1000";
             // 
             // startButton
             // 
@@ -95,7 +94,7 @@
             // 
             // levels
             // 
-            this.levels.Location = new System.Drawing.Point(668, 257);
+            this.levels.Location = new System.Drawing.Point(668, 255);
             this.levels.Maximum = 2;
             this.levels.Name = "levels";
             this.levels.Size = new System.Drawing.Size(351, 56);
@@ -138,11 +137,42 @@
             this.puzzle.TabStop = false;
             this.puzzle.Text = "puzzle";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(668, 332);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 17);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Галерея";
+            // 
+            // gallery
+            // 
+            this.gallery.Location = new System.Drawing.Point(741, 317);
+            this.gallery.Name = "gallery";
+            this.gallery.Size = new System.Drawing.Size(117, 46);
+            this.gallery.TabIndex = 14;
+            this.gallery.Text = "Выбрать изображение";
+            this.gallery.UseVisualStyleBackColor = true;
+            this.gallery.Click += new System.EventHandler(this.gallery_Click);
+            // 
+            // timerLabel
+            // 
+            this.timerLabel.AutoSize = true;
+            this.timerLabel.Location = new System.Drawing.Point(806, 417);
+            this.timerLabel.Name = "timerLabel";
+            this.timerLabel.Size = new System.Drawing.Size(46, 17);
+            this.timerLabel.TabIndex = 15;
+            this.timerLabel.Text = "label6";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1062, 623);
+            this.Controls.Add(this.timerLabel);
+            this.Controls.Add(this.gallery);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.puzzle);
             this.Controls.Add(this.levelName);
             this.Controls.Add(this.label5);
@@ -155,7 +185,6 @@
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
-           
             ((System.ComponentModel.ISupportInitialize)(this.levels)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
@@ -175,6 +204,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label levelName;
         private System.Windows.Forms.GroupBox puzzle;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button gallery;
+        private System.Windows.Forms.Label timerLabel;
     }
 }
 
