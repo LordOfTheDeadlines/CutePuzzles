@@ -85,36 +85,82 @@ namespace Cute_Pazzle
             return bitmap;
         }
 
+        private void CreateBitmapImage2(Image image, Image[] images, int index, int numRow, int numColumn, int unitX, int unitY)
+        {
+
+            images[index] = new Bitmap(unitX,unitY);
+            Graphics picture = Graphics.FromImage(images[index]);
+            picture.Clear(Color.Purple);
+            picture.DrawImage(image, 
+                new Rectangle(0, 0, unitX, unitY),
+                new Rectangle(unitX*(index%numColumn),unitY*(index/numRow),unitX,unitY),
+                GraphicsUnit.Pixel);
+            picture.Flush();
+        }
         PictureBox[] picBoxes = null;
         Image[] images = null;
        
        
         private void startButton_Click(object sender, EventArgs e)
         { 
-            int current = 4;//зависит от сложности
-         
-            #region вынести в класс Bitmap как метод
-            picBoxes = new PictureBox[current];
-            images = new Image[current];
-            int numRow = (int)Math.Sqrt(current);
+            int easyLevelNum = 4;//зависит от сложности
+            CreateLevel(easyLevelNum);
+            
+            
+           
+        }
+
+        private void Random(int[] arr)//перемешивает кусочки пазла
+        {
+            Random random = new Random();
+            int l = arr.Length;
+            while (l > 1)
+            {
+                int n = random.Next(l);
+                l--;
+                int copy = arr[l];
+                arr[l] = arr[n];
+                arr[n] = copy;
+            }
+        }
+        private void CreateLevel(int levelNum)
+        {
+            int currentLevel = levelNum;
+            if (picBox!=null)
+            {
+                puzzle.Controls.Remove(picBox);
+                picBox.Dispose();
+                picBox = null;
+            }
+            if(picBoxes==null)
+            {
+                images = new Image[currentLevel];
+                picBoxes = new PictureBox[currentLevel];
+            }
+           
+            picBoxes = new PictureBox[currentLevel];
+            images = new Image[currentLevel];
+            int numRow = (int)Math.Sqrt(currentLevel);
             int numColumn = numRow;
             int unitX = puzzle.Width / numRow;
             int unitY = puzzle.Height / numColumn;
-            int[] indexArr = new int[current];
+            int[] indexArr = new int[currentLevel];
 
-            for(int i=0;i<current;i++)
+            for (int i = 0; i < currentLevel; i++)
             {
                 indexArr[i] = i;
                 if (picBoxes[i] == null) picBoxes[i] = new PictureBox();
                 picBoxes[i].Width = unitX;
                 picBoxes[i].Height = unitY;
 
-               // CreateBitmapImage();
-
-
+                CreateBitmapImage2(image, images, i, numRow, numColumn, unitX, unitY);
+                picBoxes[i].Location = new Point(unitX * (i % numColumn), unitY * (i / numRow));
+                if (puzzle.Controls.Contains(picBoxes[i])) puzzle.Controls.Add(picBoxes[i]);
             }
-            #endregion
 
+            Random(indexArr);
+            for (int i = 0; i < currentLevel; i++)
+                picBoxes[i].Image = images[indexArr[i]];
         }
 
         public void OnPuzzleClick(object sender, EventArgs e)
@@ -151,16 +197,22 @@ namespace Cute_Pazzle
             this.height = height;
         }
 
-        private void CreateLevel()
-        {
-
-        }
+       
        
 
-        private void Random(int[] arr)//перемешивает кусочки пазла
-        {
-
-        }
+        //private void Random(int[] arr)//перемешивает кусочки пазла
+        //{
+        //    Random random = new Random();
+        //    int l = arr.Length;
+        //    while(l>1)
+        //    {
+        //        int n = random.Next(l);
+        //        l--;
+        //        int copy = arr[l];
+        //        arr[l] = arr[n];
+        //        arr[n] = copy; 
+        //    }
+        //}
     }
 
     public class CuteTimer

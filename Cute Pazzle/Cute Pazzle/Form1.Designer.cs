@@ -84,12 +84,13 @@
             // 
             // startButton
             // 
+            this.startButton.BackColor = System.Drawing.Color.LightCyan;
             this.startButton.Location = new System.Drawing.Point(668, 535);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(75, 23);
             this.startButton.TabIndex = 7;
             this.startButton.Text = "Начать";
-            this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.UseVisualStyleBackColor = false;
             this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
             // levels
@@ -148,12 +149,13 @@
             // 
             // gallery
             // 
+            this.gallery.BackColor = System.Drawing.Color.LightCyan;
             this.gallery.Location = new System.Drawing.Point(741, 317);
             this.gallery.Name = "gallery";
             this.gallery.Size = new System.Drawing.Size(117, 46);
             this.gallery.TabIndex = 14;
             this.gallery.Text = "Выбрать изображение";
-            this.gallery.UseVisualStyleBackColor = true;
+            this.gallery.UseVisualStyleBackColor = false;
             this.gallery.Click += new System.EventHandler(this.gallery_Click);
             // 
             // timerLabel
@@ -169,6 +171,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(1062, 623);
             this.Controls.Add(this.timerLabel);
             this.Controls.Add(this.gallery);

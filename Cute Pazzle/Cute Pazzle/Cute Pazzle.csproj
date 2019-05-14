@@ -99,7 +99,9 @@
     <None Include="Resources\orig.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\sad owl.jpg" />
+    <None Include="Resources\sad owl.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\orig1.jpg" />
