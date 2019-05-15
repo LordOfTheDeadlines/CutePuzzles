@@ -138,8 +138,7 @@ namespace Cute_Pazzle
                 picBoxes = new PictureBox[currentLevel];
             }
            
-            picBoxes = new PictureBox[currentLevel];
-            images = new Image[currentLevel];
+           
             int numRow = (int)Math.Sqrt(currentLevel);
             int numColumn = numRow;
             int unitX = puzzle.Width / numRow;
@@ -154,8 +153,8 @@ namespace Cute_Pazzle
                 picBoxes[i].Height = unitY;
 
                 CreateBitmapImage2(image, images, i, numRow, numColumn, unitX, unitY);
-                picBoxes[i].Location = new Point(unitX * (i % numColumn), unitY * (i / numRow));
-                if (puzzle.Controls.Contains(picBoxes[i])) puzzle.Controls.Add(picBoxes[i]);
+                picBoxes[i].Location = new Point(unitX * (i % numColumn), unitY * (i / numColumn));
+                if (!puzzle.Controls.Contains(picBoxes[i])) puzzle.Controls.Add(picBoxes[i]);
             }
 
             Random(indexArr);
