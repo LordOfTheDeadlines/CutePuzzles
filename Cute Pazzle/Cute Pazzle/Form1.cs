@@ -10,17 +10,16 @@ using System.Windows.Forms;
 
 namespace Cute_Pazzle
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             levels.Scroll += levelsScroll;
+            
         }
-
-        CuteTimer cuteTimer = new CuteTimer();
-
+        
         private DateTime levelTime = DateTime.Now.AddSeconds(1000);
         private int actionCounts = 1000;
         int current = 4;
@@ -33,6 +32,7 @@ namespace Cute_Pazzle
                     counter.Text = "1000";
                     actionCounts = 1000;
                     levelTime = DateTime.Now.AddSeconds(1000);
+                    label1.Text = "1000";
                     current = 4;
                     break;
                 case 1:
@@ -40,13 +40,15 @@ namespace Cute_Pazzle
                     counter.Text = "400";
                     actionCounts = 400;
                     levelTime = DateTime.Now.AddSeconds(750);
+                    label1.Text = "750";
                     current = 16;
                     break;
                 case 2:
                     levelName.Text = "Сложный";
                     counter.Text = "250";
                     actionCounts = 250;
-                    levelTime = DateTime.Now.AddSeconds(500);
+                    levelTime = DateTime.Now.AddSeconds(5);
+                    label1.Text = "5";
                     current =36;
                     break;
             }
@@ -84,7 +86,7 @@ namespace Cute_Pazzle
             picture.Flush();
             return bitmap;
         }
-
+       
         private void CreateBitmapImage2(Image image, Image[] images, int index, int numRow, int numColumn, int unitX, int unitY)
         {
 
@@ -102,12 +104,9 @@ namespace Cute_Pazzle
        
        
         private void startButton_Click(object sender, EventArgs e)
-        { 
-            int easyLevelNum = 4;//зависит от сложности
-            CreateLevel(easyLevelNum);
-            
-            
-           
+        {
+            timer2.Start();
+            CreateLevel(current);
         }
 
         private void Random(int[] arr)//перемешивает кусочки пазла
@@ -148,7 +147,11 @@ namespace Cute_Pazzle
             for (int i = 0; i < currentLevel; i++)
             {
                 indexArr[i] = i;
-                if (picBoxes[i] == null) picBoxes[i] = new PictureBox();
+                if (picBoxes[i] == null)
+                {
+                    picBoxes[i] = new PictureBox();
+                    picBoxes[i].BorderStyle = BorderStyle.Fixed3D;
+                }
                 picBoxes[i].Width = unitX;
                 picBoxes[i].Height = unitY;
 
@@ -182,10 +185,30 @@ namespace Cute_Pazzle
         }
 
       
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+          
+            var dateTime = DateTime.Now;
+            if (dateTime < levelTime)
+            {
+                var timeSpan = levelTime - dateTime;
+                if(timeSpan.Seconds!=0)
+                label1.Text =string.Format("{0:00}", (int)timeSpan.TotalSeconds);
+                else
+                {
+                    ////timer2.Stop();
+                    //this.Hide();
+                    //GameOverForm gameOver = new GameOverForm();
+                    //gameOver.Show();
+                }
+            }
+            
+        }
     }
 
-    
-    public class CuteBitmap 
+
+    public class CuteBitmap
     {
         private int height;
         private int width;
@@ -194,46 +217,6 @@ namespace Cute_Pazzle
         {
             this.width = width;
             this.height = height;
-        }
-
-       
-       
-
-        //private void Random(int[] arr)//перемешивает кусочки пазла
-        //{
-        //    Random random = new Random();
-        //    int l = arr.Length;
-        //    while(l>1)
-        //    {
-        //        int n = random.Next(l);
-        //        l--;
-        //        int copy = arr[l];
-        //        arr[l] = arr[n];
-        //        arr[n] = copy; 
-        //    }
-        //}
-    }
-
-    public class CuteTimer
-    {
-        public void CuteTimerTick(object sender, EventArgs e, DateTime levelTime, Label label)
-        {
-            var dateTime = new DateTime();
-            if (dateTime < levelTime)
-            {
-                var time = (levelTime - dateTime);
-
-                label.Text = string.Format("\r{0:00}", (int)time.TotalSeconds);
-            }
-        }
-
-        private void TimeOver(TimeSpan time)
-        {
-            if(time==TimeSpan.Zero)
-            {
-                GameOverForm newForm = new GameOverForm();
-                newForm.Show();
-            }
         }
     }
 }

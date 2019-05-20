@@ -1,6 +1,6 @@
 ﻿namespace Cute_Pazzle
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -43,6 +43,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.gallery = new System.Windows.Forms.Button();
             this.timerLabel = new System.Windows.Forms.Label();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.levels)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -163,11 +164,14 @@
             this.timerLabel.AutoSize = true;
             this.timerLabel.Location = new System.Drawing.Point(806, 417);
             this.timerLabel.Name = "timerLabel";
-            this.timerLabel.Size = new System.Drawing.Size(46, 17);
+            this.timerLabel.Size = new System.Drawing.Size(0, 17);
             this.timerLabel.TabIndex = 15;
-            this.timerLabel.Text = "label6";
             // 
-            // Form1
+            // timer2
+            // 
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -186,8 +190,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Name = "MainForm";
+            this.Text = "Cute Pazzle";
             ((System.ComponentModel.ISupportInitialize)(this.levels)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
@@ -210,6 +215,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button gallery;
         private System.Windows.Forms.Label timerLabel;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 

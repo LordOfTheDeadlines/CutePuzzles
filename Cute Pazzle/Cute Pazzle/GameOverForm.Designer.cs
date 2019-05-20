@@ -46,6 +46,7 @@
             // 
             // richTextBox1
             // 
+            this.richTextBox1.BackColor = System.Drawing.Color.LightCyan;
             this.richTextBox1.Location = new System.Drawing.Point(27, 103);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(198, 68);
@@ -54,22 +55,25 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.LightCyan;
             this.button1.Location = new System.Drawing.Point(27, 208);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(116, 23);
             this.button1.TabIndex = 2;
             this.button1.Text = "Главное меню";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // GameOverForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.AntiqueWhite;
             this.ClientSize = new System.Drawing.Size(527, 403);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "GameOverForm";
             this.Text = "GameOverForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
