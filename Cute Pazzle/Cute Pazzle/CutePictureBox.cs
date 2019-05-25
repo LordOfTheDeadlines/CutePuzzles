@@ -20,8 +20,8 @@ namespace Cute_Pazzle
 
         public int ImageIndex
         {
-            get { return index; }
-            set { index = value; }
+            get { return imageIndex; }
+            set { imageIndex = value; }
         }
         public bool isMuch()
         {

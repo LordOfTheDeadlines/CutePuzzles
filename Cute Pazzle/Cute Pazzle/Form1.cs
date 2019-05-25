@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,9 +18,10 @@ namespace Cute_Pazzle
         {
             InitializeComponent();
             levels.Scroll += levelsScroll;
+            player.Play();
         }
 
-
+        SoundPlayer player = new SoundPlayer(@"C:\Users\Acer\source\repos\LordOfTheDeadlines\CutePuzzles\Cute Pazzle\Cute Pazzle\Resources\sound1.wav");
         private DateTime levelTime = DateTime.Now.AddSeconds(1000);
         private int actionCounts = 1000;
         int current = 4;
@@ -50,7 +52,7 @@ namespace Cute_Pazzle
                     break;
             }
         }
-
+        
         Image image;
         OpenFileDialog openFileDialog = null;
         PictureBox picBox = null;
@@ -75,7 +77,6 @@ namespace Cute_Pazzle
 
         private Bitmap CreateBitmapImage(Image image)
         {
-
             Bitmap bitmap = new Bitmap(puzzle.Width, puzzle.Height);
             Graphics picture = Graphics.FromImage(bitmap);
             picture.Clear(Color.Purple);
@@ -102,8 +103,18 @@ namespace Cute_Pazzle
        
         private void startButton_Click(object sender, EventArgs e)
         {
-            timer1.Start();
-            CreateLevel(current);
+            if (picBox == null)
+            {
+                MessageBox.Show(
+                   "Выберите картинку",
+                   ":3",
+                   MessageBoxButtons.OK);
+            }
+            else
+            {
+                timer1.Start();
+                CreateLevel(current);
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -120,9 +131,8 @@ namespace Cute_Pazzle
                     GameOver();
                 }
             }
-
         }
-
+          
         private void Random(int[] arr)//перемешивает кусочки пазла
         {
             Random random = new Random();
@@ -138,7 +148,7 @@ namespace Cute_Pazzle
         }
         private void CreateLevel(int levelNum)
         {
-
+           
             int currentLevel = levelNum;
             if (picBox != null)
             {
@@ -220,20 +230,18 @@ namespace Cute_Pazzle
             box1.ImageIndex = index2;
             if(IsWin())
             {
-                //timer1.Stop();
-                //Hide();
-                //var win = new YouWinForm();
-                //win.Show();
+                timer1.Stop();
+                var win = new YouWinForm();
+                win.ShowDialog();
             }
         }
 
         private void GameOver()
         {
             timer1.Stop();
-            Hide();
+            picBox = null;
             GameOverForm newForm = new GameOverForm();
-            newForm.Show();
-            
+            newForm.ShowDialog();       
         }
 
         private bool IsWin()
@@ -246,6 +254,44 @@ namespace Cute_Pazzle
             return true;
         }
 
+        static int pauseClickCount = 0;
+        private void musicPictureBox_Click(object sender, EventArgs e)
+        {
+           
+            if (pauseClickCount % 2==0)
+            {
+                musicPictureBox.Image = Properties.Resources.musicNo;
+                 player.Stop();
+                pauseClickCount++;
+            }
+            else
+            {
+                image = null;
+                musicPictureBox.Image = Properties.Resources.music;
+                 player.Play();
+                pauseClickCount++;
+            }
+        }
+
+        static int nextSongClickCount = 0;
+        private void nextSongPictureBox_Click(object sender, EventArgs e)
+        {
+            switch(nextSongClickCount%3)
+            {
+                case 1:
+                    player.Stop();
+                    player = new SoundPlayer((@"C:\Users\Acer\source\repos\LordOfTheDeadlines\CutePuzzles\Cute Pazzle\Cute Pazzle\Resources\sound1.wav"));
+                    player.Play();
+                    nextSongClickCount++;
+                    break;
+                case 0:
+                    player.Stop();
+                    player = new SoundPlayer((@"C:\Users\Acer\source\repos\LordOfTheDeadlines\CutePuzzles\Cute Pazzle\Cute Pazzle\Resources\sound2.wav"));
+                    player.Play();
+                    nextSongClickCount++;
+                    break;
+            }
+        }
     }
    
 }

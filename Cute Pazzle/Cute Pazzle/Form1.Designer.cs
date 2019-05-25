@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,11 +39,15 @@
             this.levels = new System.Windows.Forms.TrackBar();
             this.label5 = new System.Windows.Forms.Label();
             this.levelName = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.puzzle = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.gallery = new System.Windows.Forms.Button();
+            this.nextSongPictureBox = new System.Windows.Forms.PictureBox();
+            this.musicPictureBox = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.levels)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nextSongPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.musicPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -122,16 +127,6 @@
             this.levelName.TabIndex = 11;
             this.levelName.Text = "Низкий";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::Cute_Pazzle.Properties.Resources._75b53a69853253_5bbe0d80ddcb2;
-            this.pictureBox2.Location = new System.Drawing.Point(668, 38);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(351, 102);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 9;
-            this.pictureBox2.TabStop = false;
-            // 
             // puzzle
             // 
             this.puzzle.Location = new System.Drawing.Point(34, 51);
@@ -161,12 +156,46 @@
             this.gallery.UseVisualStyleBackColor = false;
             this.gallery.Click += new System.EventHandler(this.gallery_Click);
             // 
+            // nextSongPictureBox
+            // 
+            this.nextSongPictureBox.Image = global::Cute_Pazzle.Properties.Resources.Continue_icon1;
+            this.nextSongPictureBox.Location = new System.Drawing.Point(98, 3);
+            this.nextSongPictureBox.Name = "nextSongPictureBox";
+            this.nextSongPictureBox.Size = new System.Drawing.Size(35, 42);
+            this.nextSongPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.nextSongPictureBox.TabIndex = 16;
+            this.nextSongPictureBox.TabStop = false;
+            this.nextSongPictureBox.Click += new System.EventHandler(this.nextSongPictureBox_Click);
+            // 
+            // musicPictureBox
+            // 
+            this.musicPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("musicPictureBox.Image")));
+            this.musicPictureBox.Location = new System.Drawing.Point(34, 3);
+            this.musicPictureBox.Name = "musicPictureBox";
+            this.musicPictureBox.Size = new System.Drawing.Size(44, 42);
+            this.musicPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.musicPictureBox.TabIndex = 15;
+            this.musicPictureBox.TabStop = false;
+            this.musicPictureBox.Click += new System.EventHandler(this.musicPictureBox_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Cute_Pazzle.Properties.Resources._75b53a69853253_5bbe0d80ddcb2;
+            this.pictureBox2.Location = new System.Drawing.Point(668, 38);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(351, 102);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 9;
+            this.pictureBox2.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(1062, 623);
+            this.Controls.Add(this.nextSongPictureBox);
+            this.Controls.Add(this.musicPictureBox);
             this.Controls.Add(this.gallery);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.puzzle);
@@ -182,6 +211,8 @@
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.levels)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nextSongPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.musicPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -202,6 +233,8 @@
         private System.Windows.Forms.GroupBox puzzle;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button gallery;
+        private System.Windows.Forms.PictureBox musicPictureBox;
+        private System.Windows.Forms.PictureBox nextSongPictureBox;
     }
 }
 
