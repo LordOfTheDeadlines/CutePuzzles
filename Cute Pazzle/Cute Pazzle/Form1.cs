@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace Cute_Pazzle
 {
-    public partial class MainForm : Form
+    public partial class Form1 : Form
     {
 
-        public MainForm()
+        public Form1()
         {
             InitializeComponent();
             levels.Scroll += levelsScroll;
-            
         }
-        
+
+
         private DateTime levelTime = DateTime.Now.AddSeconds(1000);
         private int actionCounts = 1000;
         int current = 4;
@@ -32,7 +32,6 @@ namespace Cute_Pazzle
                     counter.Text = "1000";
                     actionCounts = 1000;
                     levelTime = DateTime.Now.AddSeconds(1000);
-                    label1.Text = "1000";
                     current = 4;
                     break;
                 case 1:
@@ -40,15 +39,13 @@ namespace Cute_Pazzle
                     counter.Text = "400";
                     actionCounts = 400;
                     levelTime = DateTime.Now.AddSeconds(750);
-                    label1.Text = "750";
                     current = 16;
                     break;
                 case 2:
                     levelName.Text = "Сложный";
-                    counter.Text = "250";
-                    actionCounts = 250;
-                    levelTime = DateTime.Now.AddSeconds(5);
-                    label1.Text = "5";
+                    counter.Text = "10";
+                    actionCounts = 10;
+                    levelTime = DateTime.Now.AddSeconds(15);
                     current =36;
                     break;
             }
@@ -86,7 +83,7 @@ namespace Cute_Pazzle
             picture.Flush();
             return bitmap;
         }
-       
+
         private void CreateBitmapImage2(Image image, Image[] images, int index, int numRow, int numColumn, int unitX, int unitY)
         {
 
@@ -105,8 +102,25 @@ namespace Cute_Pazzle
        
         private void startButton_Click(object sender, EventArgs e)
         {
-            timer2.Start();
+            timer1.Start();
             CreateLevel(current);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+            var dateTime = DateTime.Now;
+            if (dateTime < levelTime)
+            {
+                var timeSpan = levelTime - dateTime;
+                if (timeSpan.Seconds != 0)
+                    label1.Text = string.Format("{0:00}", (int)timeSpan.TotalSeconds);
+                else
+                {
+                    GameOver();
+                }
+            }
+
         }
 
         private void Random(int[] arr)//перемешивает кусочки пазла
@@ -124,20 +138,21 @@ namespace Cute_Pazzle
         }
         private void CreateLevel(int levelNum)
         {
+
             int currentLevel = levelNum;
-            if (picBox!=null)
+            if (picBox != null)
             {
                 puzzle.Controls.Remove(picBox);
                 picBox.Dispose();
                 picBox = null;
             }
-            if(picBoxes==null)
+            if (picBoxes == null)
             {
                 images = new Image[currentLevel];
                 picBoxes = new PictureBox[currentLevel];
             }
-           
-           
+
+
             int numRow = (int)Math.Sqrt(currentLevel);
             int numColumn = numRow;
             int unitX = puzzle.Width / numRow;
@@ -149,12 +164,13 @@ namespace Cute_Pazzle
                 indexArr[i] = i;
                 if (picBoxes[i] == null)
                 {
-                    picBoxes[i] = new PictureBox();
+                    picBoxes[i] = new CutePictureBox();
+                    picBoxes[i].Click += new EventHandler(OnPuzzleClick);
                     picBoxes[i].BorderStyle = BorderStyle.Fixed3D;
                 }
                 picBoxes[i].Width = unitX;
                 picBoxes[i].Height = unitY;
-
+                ((CutePictureBox)picBoxes[i]).Index = i;
                 CreateBitmapImage2(image, images, i, numRow, numColumn, unitX, unitY);
                 picBoxes[i].Location = new Point(unitX * (i % numColumn), unitY * (i / numColumn));
                 if (!puzzle.Controls.Contains(picBoxes[i])) puzzle.Controls.Add(picBoxes[i]);
@@ -162,61 +178,74 @@ namespace Cute_Pazzle
 
             Random(indexArr);
             for (int i = 0; i < currentLevel; i++)
+            {
                 picBoxes[i].Image = images[indexArr[i]];
+                ((CutePictureBox)picBoxes[i]).ImageIndex = indexArr[i];
+            }
         }
+
+        CutePictureBox first = null;
+        CutePictureBox second = null;
 
         public void OnPuzzleClick(object sender, EventArgs e)
         {
+            if(first==null)
+            {
+                first = (CutePictureBox)sender;
+                first.BorderStyle = BorderStyle.FixedSingle;
+            }
+            else if (second == null && actionCounts > 0)
+            {
+                second = (CutePictureBox)sender;
+                second.BorderStyle = BorderStyle.FixedSingle;
+                first.BorderStyle = BorderStyle.Fixed3D;
+                ChangeImageLocation(first, second);
+                actionCounts--;
+                counter.Text = (Convert.ToString(actionCounts));
+                first = null;
+                second = null;
+            }
+            else 
+            {
+                GameOver();
+            }
+        }
 
+        private void ChangeImageLocation(CutePictureBox box1, CutePictureBox box2)
+        {
+            int index2 = box2.ImageIndex;
+            box2.Image = images[box1.ImageIndex];
+            box2.ImageIndex = box1.ImageIndex;
+            box1.Image = images[index2];
+            box1.ImageIndex = index2;
+            if(IsWin())
+            {
+                //timer1.Stop();
+                //Hide();
+                //var win = new YouWinForm();
+                //win.Show();
+            }
         }
 
         private void GameOver()
         {
-            if (actionCounts == 0)
-            {
-                GameOverForm newForm = new GameOverForm();
-                newForm.Show();
-            }
+            timer1.Stop();
+            Hide();
+            GameOverForm newForm = new GameOverForm();
+            newForm.Show();
+            
         }
 
         private bool IsWin()
         {
-            return false;
-        }
-
-      
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-          
-            var dateTime = DateTime.Now;
-            if (dateTime < levelTime)
+            for(int i=0; i<current;i++)
             {
-                var timeSpan = levelTime - dateTime;
-                if(timeSpan.Seconds!=0)
-                label1.Text =string.Format("{0:00}", (int)timeSpan.TotalSeconds);
-                else
-                {
-                    ////timer2.Stop();
-                    //this.Hide();
-                    //GameOverForm gameOver = new GameOverForm();
-                    //gameOver.Show();
-                }
+                if (((CutePictureBox)picBoxes[i]).ImageIndex != ((CutePictureBox)picBoxes[i]).Index)
+                    return false;
             }
-            
+            return true;
         }
+
     }
-
-
-    public class CuteBitmap
-    {
-        private int height;
-        private int width;
-
-        public CuteBitmap(int width, int height)
-        {
-            this.width = width;
-            this.height = height;
-        }
-    }
+   
 }

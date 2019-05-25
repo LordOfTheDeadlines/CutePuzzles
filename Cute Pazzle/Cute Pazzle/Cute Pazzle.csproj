@@ -46,6 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CuteBitmap.cs" />
+    <Compile Include="CutePictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +64,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="YouWinForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YouWinForm.Designer.cs">
+      <DependentUpon>YouWinForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -70,6 +80,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YouWinForm.resx">
+      <DependentUpon>YouWinForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -99,12 +112,18 @@
     <None Include="Resources\orig.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\sad owl.jpg">
+    <None Include="Resources\sad_owl.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\orig1.jpg" />
+    <None Include="Resources\gameOver.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\win1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\win2.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

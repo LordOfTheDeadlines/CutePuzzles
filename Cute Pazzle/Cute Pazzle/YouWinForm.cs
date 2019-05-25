@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace Cute_Pazzle
 {
-    public partial class GameOverForm : Form
+    public partial class YouWinForm : Form
     {
-        public GameOverForm()
+        public YouWinForm()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Close();
-           
         }
     }
 }

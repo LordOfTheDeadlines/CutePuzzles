@@ -1,6 +1,6 @@
 ﻿namespace Cute_Pazzle
 {
-    partial class MainForm
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.
@@ -42,16 +42,18 @@
             this.puzzle = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.gallery = new System.Windows.Forms.Button();
-            this.timerLabel = new System.Windows.Forms.Label();
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.levels)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(811, 405);
+            this.label1.Location = new System.Drawing.Point(811, 403);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 17);
             this.label1.TabIndex = 2;
@@ -159,25 +161,12 @@
             this.gallery.UseVisualStyleBackColor = false;
             this.gallery.Click += new System.EventHandler(this.gallery_Click);
             // 
-            // timerLabel
-            // 
-            this.timerLabel.AutoSize = true;
-            this.timerLabel.Location = new System.Drawing.Point(806, 417);
-            this.timerLabel.Name = "timerLabel";
-            this.timerLabel.Size = new System.Drawing.Size(0, 17);
-            this.timerLabel.TabIndex = 15;
-            // 
-            // timer2
-            // 
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
-            // MainForm
+            // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(1062, 623);
-            this.Controls.Add(this.timerLabel);
             this.Controls.Add(this.gallery);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.puzzle);
@@ -190,9 +179,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "MainForm";
-            this.Text = "Cute Pazzle";
+            this.Name = "Form1";
+            this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.levels)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
@@ -214,8 +202,6 @@
         private System.Windows.Forms.GroupBox puzzle;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button gallery;
-        private System.Windows.Forms.Label timerLabel;
-        private System.Windows.Forms.Timer timer2;
     }
 }
 
