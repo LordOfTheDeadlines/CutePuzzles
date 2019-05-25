@@ -54,18 +54,20 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.LightCyan;
             this.button1.Location = new System.Drawing.Point(306, 204);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(147, 39);
             this.button1.TabIndex = 2;
             this.button1.Text = "Главное меню";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // GameOverForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(527, 403);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.richTextBox1);

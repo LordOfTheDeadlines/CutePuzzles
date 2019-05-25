@@ -97,10 +97,10 @@ namespace Cute_Pazzle
                 GraphicsUnit.Pixel);
             picture.Flush();
         }
+
         PictureBox[] picBoxes = null;
         Image[] images = null;
-       
-       
+        
         private void startButton_Click(object sender, EventArgs e)
         {
             if (picBox == null)
@@ -112,6 +112,8 @@ namespace Cute_Pazzle
             }
             else
             {
+                levels.Hide();
+                gallery.Hide();
                 timer1.Start();
                 CreateLevel(current);
             }
@@ -123,8 +125,8 @@ namespace Cute_Pazzle
             var dateTime = DateTime.Now;
             if (dateTime < levelTime)
             {
-                var timeSpan = levelTime - dateTime;
-                if (timeSpan.Seconds != 0)
+                TimeSpan timeSpan = levelTime - dateTime;
+                if (timeSpan.TotalSeconds != 0)
                     label1.Text = string.Format("{0:00}", (int)timeSpan.TotalSeconds);
                 else
                 {
@@ -230,6 +232,12 @@ namespace Cute_Pazzle
             box1.ImageIndex = index2;
             if(IsWin())
             {
+                puzzle.Controls.Clear();
+                picBox = null;
+                picBoxes = null;
+                images = null;
+                levels.Show();
+                gallery.Show();
                 timer1.Stop();
                 var win = new YouWinForm();
                 win.ShowDialog();
