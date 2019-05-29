@@ -118,16 +118,58 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="75b53a69853253.5bbe0d80ddcb2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\75b53a69853253.5bbe0d80ddcb2.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="panic1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\panic1.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="240.750x0" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\240.750x0.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="orig" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\orig.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sad_owl" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sad_owl.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\image.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="orig" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\orig.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="music" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\music.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="win1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\win1.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="musicNo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\musicNo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="win2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\win2.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="75b53a69853253.5bbe0d80ddcb2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\75b53a69853253.5bbe0d80ddcb2.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gameOver" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gameOver.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="timer4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\timer4.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Continue-icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Continue-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cute_owl" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cute_owl.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lama" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lama.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="oaoaoaoa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\oaoaoaoa.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Panda" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Panda.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sound1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\sound1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sound2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\sound2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
