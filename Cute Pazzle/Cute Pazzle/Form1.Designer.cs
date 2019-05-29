@@ -42,10 +42,16 @@
             this.puzzle = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.gallery = new System.Windows.Forms.Button();
+            this.gallaryListBox = new System.Windows.Forms.ListBox();
+            this.gallaryLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timerPictureBox = new System.Windows.Forms.PictureBox();
             this.nextSongPictureBox = new System.Windows.Forms.PictureBox();
             this.musicPictureBox = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.levels)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timerPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nextSongPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.musicPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -66,7 +72,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(665, 418);
+            this.label2.Location = new System.Drawing.Point(665, 403);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(134, 17);
             this.label2.TabIndex = 4;
@@ -104,7 +110,7 @@
             // levels
             // 
             this.levels.Location = new System.Drawing.Point(668, 255);
-            this.levels.Maximum = 2;
+            this.levels.Maximum = 3;
             this.levels.Name = "levels";
             this.levels.Size = new System.Drawing.Size(351, 56);
             this.levels.TabIndex = 8;
@@ -123,9 +129,8 @@
             this.levelName.AutoSize = true;
             this.levelName.Location = new System.Drawing.Point(892, 221);
             this.levelName.Name = "levelName";
-            this.levelName.Size = new System.Drawing.Size(56, 17);
+            this.levelName.Size = new System.Drawing.Size(0, 17);
             this.levelName.TabIndex = 11;
-            this.levelName.Text = "Низкий";
             // 
             // puzzle
             // 
@@ -156,9 +161,57 @@
             this.gallery.UseVisualStyleBackColor = false;
             this.gallery.Click += new System.EventHandler(this.gallery_Click);
             // 
+            // gallaryListBox
+            // 
+            this.gallaryListBox.FormattingEnabled = true;
+            this.gallaryListBox.ItemHeight = 16;
+            this.gallaryListBox.Items.AddRange(new object[] {
+            "Котик",
+            "Грустная совушка",
+            "Лама",
+            "Ещё одна совушка",
+            "Панда"});
+            this.gallaryListBox.Location = new System.Drawing.Point(879, 317);
+            this.gallaryListBox.Name = "gallaryListBox";
+            this.gallaryListBox.Size = new System.Drawing.Size(155, 148);
+            this.gallaryListBox.TabIndex = 19;
+            this.gallaryListBox.SelectedIndexChanged += new System.EventHandler(this.gallaryListBox_SelectedIndexChanged);
+            // 
+            // gallaryLinkLabel
+            // 
+            this.gallaryLinkLabel.ActiveLinkColor = System.Drawing.Color.Blue;
+            this.gallaryLinkLabel.AutoSize = true;
+            this.gallaryLinkLabel.Location = new System.Drawing.Point(876, 472);
+            this.gallaryLinkLabel.Name = "gallaryLinkLabel";
+            this.gallaryLinkLabel.Size = new System.Drawing.Size(163, 17);
+            this.gallaryLinkLabel.TabIndex = 20;
+            this.gallaryLinkLabel.TabStop = true;
+            this.gallaryLinkLabel.Text = "Загрузить с устройства";
+            this.gallaryLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GallaryLinkLabel_LinkClicked);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Cute_Pazzle.Properties.Resources.panic1;
+            this.pictureBox1.Location = new System.Drawing.Point(880, 171);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(114, 78);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 17;
+            this.pictureBox1.TabStop = false;
+            // 
+            // timerPictureBox
+            // 
+            this.timerPictureBox.Image = global::Cute_Pazzle.Properties.Resources.timer4;
+            this.timerPictureBox.Location = new System.Drawing.Point(668, 255);
+            this.timerPictureBox.Name = "timerPictureBox";
+            this.timerPictureBox.Size = new System.Drawing.Size(203, 187);
+            this.timerPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.timerPictureBox.TabIndex = 18;
+            this.timerPictureBox.TabStop = false;
+            // 
             // nextSongPictureBox
             // 
-            this.nextSongPictureBox.Image = global::Cute_Pazzle.Properties.Resources.Continue_icon1;
+            this.nextSongPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("nextSongPictureBox.Image")));
             this.nextSongPictureBox.Location = new System.Drawing.Point(98, 3);
             this.nextSongPictureBox.Name = "nextSongPictureBox";
             this.nextSongPictureBox.Size = new System.Drawing.Size(35, 42);
@@ -194,6 +247,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(1062, 623);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.gallaryLinkLabel);
+            this.Controls.Add(this.timerPictureBox);
+            this.Controls.Add(this.gallaryListBox);
             this.Controls.Add(this.nextSongPictureBox);
             this.Controls.Add(this.musicPictureBox);
             this.Controls.Add(this.gallery);
@@ -208,9 +265,12 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.levels)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timerPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nextSongPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.musicPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -235,6 +295,10 @@
         private System.Windows.Forms.Button gallery;
         private System.Windows.Forms.PictureBox musicPictureBox;
         private System.Windows.Forms.PictureBox nextSongPictureBox;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox timerPictureBox;
+        private System.Windows.Forms.ListBox gallaryListBox;
+        private System.Windows.Forms.LinkLabel gallaryLinkLabel;
     }
 }
 

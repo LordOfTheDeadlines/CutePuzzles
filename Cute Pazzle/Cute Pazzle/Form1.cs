@@ -19,60 +19,113 @@ namespace Cute_Pazzle
             InitializeComponent();
             levels.Scroll += levelsScroll;
             player.Play();
+            pictureBox1.Hide();
+            timerPictureBox.Hide();
+            gallaryListBox.Hide();
+            gallaryLinkLabel.Hide();
         }
 
-        SoundPlayer player = new SoundPlayer(@"C:\Users\Acer\source\repos\LordOfTheDeadlines\CutePuzzles\Cute Pazzle\Cute Pazzle\Resources\sound1.wav");
-        private DateTime levelTime = DateTime.Now.AddSeconds(1000);
-        private int actionCounts = 1000;
-        int current = 4;
+        SoundPlayer player = new SoundPlayer(Properties.Resources.sound1);
+        SoundPlayer newPlayer = new SoundPlayer(Properties.Resources.oaoaoaoa);
+        private DateTime levelTime;
+        private int actionCounts;
+        int current;
+        int sec;
+ 
         private void levelsScroll(object sender, EventArgs e)//установка уровня сложности
         {
             switch (levels.Value)
             {
                 case 0:
-                    levelName.Text = "Низкий";
-                    counter.Text = "1000";
-                    actionCounts = 1000;
-                    levelTime = DateTime.Now.AddSeconds(1000);
-                    current = 4;
+                    levelName.Text = "?";
                     break;
                 case 1:
-                    levelName.Text = "Средний";
-                    counter.Text = "400";
-                    actionCounts = 400;
-                    levelTime = DateTime.Now.AddSeconds(750);
-                    current = 16;
+                    sec = 45;
+                    levelName.Text = "Низкий";
+                    counter.Text = "200";
+                    actionCounts = 200;
+                    levelTime = DateTime.Now.AddSeconds(sec);
+                    current = 9;
                     break;
                 case 2:
+                    sec = 50;
+                    levelName.Text = "Средний";
+                    counter.Text = "100";
+                    actionCounts = 100;
+                    levelTime = DateTime.Now.AddSeconds(sec);
+                    current = 16;
+                    break;
+                case 3:
+                    sec = 60;
                     levelName.Text = "Сложный";
-                    counter.Text = "10";
-                    actionCounts = 10;
-                    levelTime = DateTime.Now.AddSeconds(15);
-                    current =36;
+                    counter.Text = "50";
+                    actionCounts = 50;
+                    levelTime = DateTime.Now.AddSeconds(sec);
+                    current = 25;
                     break;
             }
         }
-        
+
         Image image;
         OpenFileDialog openFileDialog = null;
-        PictureBox picBox = null;
+        public PictureBox picBox = null;
 
         private void gallery_Click(object sender, EventArgs e)//выбор изображения для пазла
+        {
+            gallaryListBox.Show();
+            gallaryLinkLabel.Show();
+        }
+
+        private void GallaryLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (openFileDialog == null) openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 image = CreateBitmapImage(Image.FromFile(openFileDialog.FileName));
-                if (picBox == null)
-                {
-                    picBox = new PictureBox();
-                    picBox.Height = puzzle.Height;
-                    picBox.Width = puzzle.Width;
-                    picBox.SizeMode = PictureBoxSizeMode.Zoom;
-                    puzzle.Controls.Add(picBox);
-                }
-                picBox.Image = image;
+                CreatePuzzle();
             }
+        }
+
+        private void gallaryListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            switch (gallaryListBox.SelectedIndex)
+            {
+                case 0:
+                    image = CreateBitmapImage(Properties.Resources.image);
+                    CreatePuzzle();
+                    break;
+                case 1:
+                    image = CreateBitmapImage(Properties.Resources.sad_owl);
+                    CreatePuzzle();
+                    break;
+                case 2:
+                    image = CreateBitmapImage(Properties.Resources.lama);
+                    CreatePuzzle();
+                    break;
+                case 3:
+                    image = CreateBitmapImage(Properties.Resources.cute_owl);
+                    CreatePuzzle();
+                    break;
+                case 4:
+                    image = CreateBitmapImage(Properties.Resources.Panda);
+                    CreatePuzzle();
+                    break;
+            }
+
+        }
+
+        private void CreatePuzzle()
+        { 
+            if (picBox == null)
+            {
+                picBox = new PictureBox();
+                picBox.Height = puzzle.Height;
+                picBox.Width = puzzle.Width;
+                picBox.SizeMode = PictureBoxSizeMode.Zoom;
+                puzzle.Controls.Add(picBox);
+            }
+            picBox.Image = image;
         }
 
         private Bitmap CreateBitmapImage(Image image)
@@ -88,22 +141,29 @@ namespace Cute_Pazzle
         private void CreateBitmapImage2(Image image, Image[] images, int index, int numRow, int numColumn, int unitX, int unitY)
         {
 
-            images[index] = new Bitmap(unitX,unitY);
+            images[index] = new Bitmap(unitX, unitY);
             Graphics picture = Graphics.FromImage(images[index]);
             picture.Clear(Color.Purple);
-            picture.DrawImage(image, 
+            picture.DrawImage(image,
                 new Rectangle(0, 0, unitX, unitY),
-                new Rectangle(unitX*(index%numColumn),unitY*(index/numRow),unitX,unitY),
+                new Rectangle(unitX * (index % numColumn), unitY * (index / numRow), unitX, unitY),
                 GraphicsUnit.Pixel);
             picture.Flush();
         }
 
         PictureBox[] picBoxes = null;
         Image[] images = null;
-        
+
         private void startButton_Click(object sender, EventArgs e)
         {
-            if (picBox == null)
+            if (levels.Value == 0)
+            {
+                MessageBox.Show(
+                  "Выберите уровень сложности",
+                  ":3",
+                  MessageBoxButtons.OK);
+            }
+           else if (picBox == null)
             {
                 MessageBox.Show(
                    "Выберите картинку",
@@ -112,6 +172,8 @@ namespace Cute_Pazzle
             }
             else
             {
+                gallaryListBox.Hide();
+                gallaryLinkLabel.Hide();
                 levels.Hide();
                 gallery.Hide();
                 timer1.Start();
@@ -126,15 +188,30 @@ namespace Cute_Pazzle
             if (dateTime < levelTime)
             {
                 TimeSpan timeSpan = levelTime - dateTime;
-                if (timeSpan.TotalSeconds != 0)
+                if (timeSpan.Seconds != 0)
+                {
+                    if (timeSpan.Seconds == 10)
+                    {
+                        TimePanic();
+                    }
                     label1.Text = string.Format("{0:00}", (int)timeSpan.TotalSeconds);
+                }
                 else
                 {
+                    Reset();
                     GameOver();
                 }
             }
         }
-          
+
+        private void TimePanic()
+        {
+            player.Stop();
+            newPlayer.Play();
+            pictureBox1.Show();
+            timerPictureBox.Show();
+        }
+
         private void Random(int[] arr)//перемешивает кусочки пазла
         {
             Random random = new Random();
@@ -148,9 +225,10 @@ namespace Cute_Pazzle
                 arr[n] = copy;
             }
         }
+
         private void CreateLevel(int levelNum)
         {
-           
+
             int currentLevel = levelNum;
             if (picBox != null)
             {
@@ -201,7 +279,7 @@ namespace Cute_Pazzle
 
         public void OnPuzzleClick(object sender, EventArgs e)
         {
-            if(first==null)
+            if (first == null)
             {
                 first = (CutePictureBox)sender;
                 first.BorderStyle = BorderStyle.FixedSingle;
@@ -217,8 +295,9 @@ namespace Cute_Pazzle
                 first = null;
                 second = null;
             }
-            else 
+            else
             {
+                Reset();
                 GameOver();
             }
         }
@@ -230,15 +309,9 @@ namespace Cute_Pazzle
             box2.ImageIndex = box1.ImageIndex;
             box1.Image = images[index2];
             box1.ImageIndex = index2;
-            if(IsWin())
+            if (IsWin())
             {
-                puzzle.Controls.Clear();
-                picBox = null;
-                picBoxes = null;
-                images = null;
-                levels.Show();
-                gallery.Show();
-                timer1.Stop();
+                Reset();
                 var win = new YouWinForm();
                 win.ShowDialog();
             }
@@ -249,12 +322,12 @@ namespace Cute_Pazzle
             timer1.Stop();
             picBox = null;
             GameOverForm newForm = new GameOverForm();
-            newForm.ShowDialog();       
+            newForm.ShowDialog();
         }
 
         private bool IsWin()
         {
-            for(int i=0; i<current;i++)
+            for (int i = 0; i < current; i++)
             {
                 if (((CutePictureBox)picBoxes[i]).ImageIndex != ((CutePictureBox)picBoxes[i]).Index)
                     return false;
@@ -262,21 +335,41 @@ namespace Cute_Pazzle
             return true;
         }
 
+        private void Reset()
+        {
+            if (newPlayer.IsLoadCompleted)
+            {
+                pictureBox1.Hide();
+                timerPictureBox.Hide();
+                newPlayer.Stop();
+                player.Play();
+            }
+            puzzle.BackgroundImage = image;
+            puzzle.Controls.Clear();
+            picBox = null;
+            picBoxes = null;
+            images = null;
+            levels.Show();
+            gallery.Show();
+            timer1.Stop();
+            levelTime = DateTime.Now.AddSeconds(sec);
+        }
+
         static int pauseClickCount = 0;
         private void musicPictureBox_Click(object sender, EventArgs e)
         {
-           
-            if (pauseClickCount % 2==0)
+
+            if (pauseClickCount % 2 == 0)
             {
                 musicPictureBox.Image = Properties.Resources.musicNo;
-                 player.Stop();
+                player.Stop();
                 pauseClickCount++;
             }
             else
             {
                 image = null;
                 musicPictureBox.Image = Properties.Resources.music;
-                 player.Play();
+                player.Play();
                 pauseClickCount++;
             }
         }
@@ -284,22 +377,22 @@ namespace Cute_Pazzle
         static int nextSongClickCount = 0;
         private void nextSongPictureBox_Click(object sender, EventArgs e)
         {
-            switch(nextSongClickCount%3)
+            switch (nextSongClickCount % 3)
             {
                 case 1:
                     player.Stop();
-                    player = new SoundPlayer((@"C:\Users\Acer\source\repos\LordOfTheDeadlines\CutePuzzles\Cute Pazzle\Cute Pazzle\Resources\sound1.wav"));
+                    player = new SoundPlayer(Properties.Resources.sound1);
                     player.Play();
                     nextSongClickCount++;
                     break;
                 case 0:
                     player.Stop();
-                    player = new SoundPlayer((@"C:\Users\Acer\source\repos\LordOfTheDeadlines\CutePuzzles\Cute Pazzle\Cute Pazzle\Resources\sound2.wav"));
+                    player = new SoundPlayer(Properties.Resources.sound2);
                     player.Play();
                     nextSongClickCount++;
                     break;
             }
         }
+
     }
-   
 }
