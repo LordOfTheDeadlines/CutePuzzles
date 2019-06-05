@@ -143,7 +143,7 @@
     <None Include="Resources\timer.gif" />
     <None Include="Resources\panic1.gif" />
     <None Include="Resources\panic2.gif" />
-    <EmbeddedResource Include="Resources\Panda.jpg" />
+    <None Include="Resources\Panda.jpg" />
     <Content Include="Resources\sound1.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
