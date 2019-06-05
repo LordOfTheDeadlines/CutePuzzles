@@ -47,6 +47,7 @@ namespace Cute_Pazzle
                 case 1:
                     sec = 45;
                     timeLabel.Text = "45";
+
                     levelName.Text = "Низкий";
                     counter.Text = "200";
                     actionCounts = 200;
@@ -76,7 +77,7 @@ namespace Cute_Pazzle
 
         Image image;
         OpenFileDialog openFileDialog = null;
-        private PictureBox picBox = null;
+        public PictureBox picBox = null;
 
         private void gallery_Click(object sender, EventArgs e)//выбор изображения для пазла
         {
@@ -96,6 +97,7 @@ namespace Cute_Pazzle
 
         private void gallaryListBox_SelectedIndexChanged(object sender, EventArgs e)//выбор изображения из галереи
         {
+
             switch (gallaryListBox.SelectedIndex)
             {
                 case 0:
@@ -119,6 +121,7 @@ namespace Cute_Pazzle
                     CopyImageInPictureBox();
                     break;
             }
+
         }
 
         private void CopyImageInPictureBox()//копируем картинку в pictureBox
@@ -152,6 +155,7 @@ namespace Cute_Pazzle
                 new Rectangle(0, 0, unitX, unitY),
                 new Rectangle(unitX * (index % numColumn), unitY * (index / numRow), unitX, unitY),
                 GraphicsUnit.Pixel);
+            picture.Flush();
         }
 
         PictureBox[] picBoxes = null;//кусочки пазла
@@ -233,6 +237,7 @@ namespace Cute_Pazzle
 
         private void CreateLevel(int levelNum)
         {
+
             int currentLevel = levelNum;
             if (picBox != null)
             {
@@ -240,12 +245,12 @@ namespace Cute_Pazzle
                 picBox.Dispose();
                 picBox = null;
             }
-
             if (picBoxes == null)
             {
                 images = new Image[currentLevel];
                 picBoxes = new PictureBox[currentLevel];
             }
+
 
             int numRow = (int)Math.Sqrt(currentLevel);
             int numColumn = numRow;
@@ -262,7 +267,6 @@ namespace Cute_Pazzle
                     picBoxes[i].Click += new EventHandler(OnPuzzleClick);
                     picBoxes[i].BorderStyle = BorderStyle.Fixed3D;
                 }
-
                 picBoxes[i].Width = unitX;
                 picBoxes[i].Height = unitY;
                 ((CutePictureBox)picBoxes[i]).Index = i;
@@ -361,8 +365,8 @@ namespace Cute_Pazzle
             levelTime = DateTime.Now.AddSeconds(sec);
         }
 
-        private int pauseClickCount = 0;
-        private void musicPictureBox_Click(object sender, EventArgs e)//включить/выключить музыку
+        static int pauseClickCount = 0;
+        private void musicPictureBox_Click(object sender, EventArgs e)
         {
 
             if (pauseClickCount % 2 == 0)
@@ -373,7 +377,7 @@ namespace Cute_Pazzle
             }
             else
             {
-               // image = null;
+                image = null;
                 musicPictureBox.Image = Properties.Resources.music;
                 player.Play();
                 pauseClickCount++;
@@ -381,7 +385,7 @@ namespace Cute_Pazzle
         }
 
         private int nextSongClickCount = 0;
-        private void nextSongPictureBox_Click(object sender, EventArgs e)//смена песни
+        private void nextSongPictureBox_Click(object sender, EventArgs e)
         {
             switch (nextSongClickCount % 2)
             {

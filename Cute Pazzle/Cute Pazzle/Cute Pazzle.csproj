@@ -63,7 +63,7 @@
       <DependentUpon>GameOverForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <EmbeddedResource Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -103,13 +103,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\image.jpg" />
+    <None Include="Resources\image.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\75b53a69853253.5bbe0d80ddcb2.gif" />
+    <None Include="Resources\75b53a69853253.5bbe0d80ddcb2.gif" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\orig.jpg" />
+    <None Include="Resources\orig.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\sad_owl.jpg">
@@ -117,7 +117,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\gameOver.gif" />
+    <None Include="Resources\gameOver.gif" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\win1.gif" />
@@ -126,14 +126,14 @@
     <None Include="Resources\win2.gif" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Continue-icon.png" />
+    <None Include="Resources\Continue-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\music.png" />
+    <None Include="Resources\music.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\lama.jpg" />
-    <EmbeddedResource Include="Resources\cute_owl.jpg" />
+    <None Include="Resources\lama.jpg" />
+    <None Include="Resources\cute_owl.jpg" />
     <Content Include="Resources\oaoaoaoa.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -143,7 +143,7 @@
     <None Include="Resources\timer.gif" />
     <None Include="Resources\panic1.gif" />
     <None Include="Resources\panic2.gif" />
-    <None Include="Resources\Panda.jpg" />
+    <EmbeddedResource Include="Resources\Panda.jpg" />
     <Content Include="Resources\sound1.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
