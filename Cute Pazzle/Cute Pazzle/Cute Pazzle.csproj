@@ -63,7 +63,7 @@
       <DependentUpon>GameOverForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -103,13 +103,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\image.jpg" />
+    <EmbeddedResource Include="Resources\image.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\75b53a69853253.5bbe0d80ddcb2.gif" />
+    <EmbeddedResource Include="Resources\75b53a69853253.5bbe0d80ddcb2.gif" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\orig.jpg" />
+    <EmbeddedResource Include="Resources\orig.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\sad_owl.jpg">
@@ -117,7 +117,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\gameOver.gif" />
+    <EmbeddedResource Include="Resources\gameOver.gif" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\win1.gif" />
@@ -126,14 +126,14 @@
     <None Include="Resources\win2.gif" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Continue-icon.png" />
+    <EmbeddedResource Include="Resources\Continue-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\music.png" />
+    <EmbeddedResource Include="Resources\music.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\lama.jpg" />
-    <None Include="Resources\cute_owl.jpg" />
+    <EmbeddedResource Include="Resources\lama.jpg" />
+    <EmbeddedResource Include="Resources\cute_owl.jpg" />
     <Content Include="Resources\oaoaoaoa.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -19,18 +19,21 @@ namespace Cute_Pazzle
             InitializeComponent();
             levels.Scroll += levelsScroll;
             player.Play();
+            timeLabel.Text = "";
+            counter.Text = "";
             pictureBox1.Hide();
             timerPictureBox.Hide();
             gallaryListBox.Hide();
             gallaryLinkLabel.Hide();
+            resetButton.Hide();
         }
 
         SoundPlayer player = new SoundPlayer(Properties.Resources.sound1);
         SoundPlayer newPlayer = new SoundPlayer(Properties.Resources.oaoaoaoa);
         private DateTime levelTime;
         private int actionCounts;
-        int current;
-        int sec;
+        private int current;
+        private int sec;
  
         private void levelsScroll(object sender, EventArgs e)//установка уровня сложности
         {
@@ -38,9 +41,12 @@ namespace Cute_Pazzle
             {
                 case 0:
                     levelName.Text = "?";
+                    timeLabel.Text = "?";
+                    counter.Text = "?";
                     break;
                 case 1:
                     sec = 45;
+                    timeLabel.Text = "45";
                     levelName.Text = "Низкий";
                     counter.Text = "200";
                     actionCounts = 200;
@@ -49,6 +55,7 @@ namespace Cute_Pazzle
                     break;
                 case 2:
                     sec = 50;
+                    timeLabel.Text = "50";
                     levelName.Text = "Средний";
                     counter.Text = "100";
                     actionCounts = 100;
@@ -57,6 +64,7 @@ namespace Cute_Pazzle
                     break;
                 case 3:
                     sec = 60;
+                    timeLabel.Text = "60";
                     levelName.Text = "Сложный";
                     counter.Text = "50";
                     actionCounts = 50;
@@ -68,7 +76,7 @@ namespace Cute_Pazzle
 
         Image image;
         OpenFileDialog openFileDialog = null;
-        public PictureBox picBox = null;
+        private PictureBox picBox = null;
 
         private void gallery_Click(object sender, EventArgs e)//выбор изображения для пазла
         {
@@ -76,46 +84,44 @@ namespace Cute_Pazzle
             gallaryLinkLabel.Show();
         }
 
-        private void GallaryLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void GallaryLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)//выбор изображения с устройства
         {
             if (openFileDialog == null) openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 image = CreateBitmapImage(Image.FromFile(openFileDialog.FileName));
-                CreatePuzzle();
+                CopyImageInPictureBox();
             }
         }
 
-        private void gallaryListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void gallaryListBox_SelectedIndexChanged(object sender, EventArgs e)//выбор изображения из галереи
         {
-
             switch (gallaryListBox.SelectedIndex)
             {
                 case 0:
                     image = CreateBitmapImage(Properties.Resources.image);
-                    CreatePuzzle();
+                    CopyImageInPictureBox();
                     break;
                 case 1:
                     image = CreateBitmapImage(Properties.Resources.sad_owl);
-                    CreatePuzzle();
+                    CopyImageInPictureBox();
                     break;
                 case 2:
                     image = CreateBitmapImage(Properties.Resources.lama);
-                    CreatePuzzle();
+                    CopyImageInPictureBox();
                     break;
                 case 3:
                     image = CreateBitmapImage(Properties.Resources.cute_owl);
-                    CreatePuzzle();
+                    CopyImageInPictureBox();
                     break;
                 case 4:
                     image = CreateBitmapImage(Properties.Resources.Panda);
-                    CreatePuzzle();
+                    CopyImageInPictureBox();
                     break;
             }
-
         }
 
-        private void CreatePuzzle()
+        private void CopyImageInPictureBox()//копируем картинку в pictureBox
         { 
             if (picBox == null)
             {
@@ -132,9 +138,7 @@ namespace Cute_Pazzle
         {
             Bitmap bitmap = new Bitmap(puzzle.Width, puzzle.Height);
             Graphics picture = Graphics.FromImage(bitmap);
-            picture.Clear(Color.Purple);
             picture.DrawImage(image, new Rectangle(0, 0, puzzle.Width, puzzle.Height));
-            picture.Flush();
             return bitmap;
         }
 
@@ -148,11 +152,10 @@ namespace Cute_Pazzle
                 new Rectangle(0, 0, unitX, unitY),
                 new Rectangle(unitX * (index % numColumn), unitY * (index / numRow), unitX, unitY),
                 GraphicsUnit.Pixel);
-            picture.Flush();
         }
 
-        PictureBox[] picBoxes = null;
-        Image[] images = null;
+        PictureBox[] picBoxes = null;//кусочки пазла
+        Image[] images = null;//изображения на каждом из кусочков пазла
 
         private void startButton_Click(object sender, EventArgs e)
         {
@@ -172,10 +175,12 @@ namespace Cute_Pazzle
             }
             else
             {
+                timeLabel.Hide();
                 gallaryListBox.Hide();
                 gallaryLinkLabel.Hide();
                 levels.Hide();
                 gallery.Hide();
+                resetButton.Show();
                 timer1.Start();
                 CreateLevel(current);
             }
@@ -228,7 +233,6 @@ namespace Cute_Pazzle
 
         private void CreateLevel(int levelNum)
         {
-
             int currentLevel = levelNum;
             if (picBox != null)
             {
@@ -236,12 +240,12 @@ namespace Cute_Pazzle
                 picBox.Dispose();
                 picBox = null;
             }
+
             if (picBoxes == null)
             {
                 images = new Image[currentLevel];
                 picBoxes = new PictureBox[currentLevel];
             }
-
 
             int numRow = (int)Math.Sqrt(currentLevel);
             int numColumn = numRow;
@@ -258,6 +262,7 @@ namespace Cute_Pazzle
                     picBoxes[i].Click += new EventHandler(OnPuzzleClick);
                     picBoxes[i].BorderStyle = BorderStyle.Fixed3D;
                 }
+
                 picBoxes[i].Width = unitX;
                 picBoxes[i].Height = unitY;
                 ((CutePictureBox)picBoxes[i]).Index = i;
@@ -349,14 +354,15 @@ namespace Cute_Pazzle
             picBox = null;
             picBoxes = null;
             images = null;
+            resetButton.Hide();
             levels.Show();
             gallery.Show();
             timer1.Stop();
             levelTime = DateTime.Now.AddSeconds(sec);
         }
 
-        static int pauseClickCount = 0;
-        private void musicPictureBox_Click(object sender, EventArgs e)
+        private int pauseClickCount = 0;
+        private void musicPictureBox_Click(object sender, EventArgs e)//включить/выключить музыку
         {
 
             if (pauseClickCount % 2 == 0)
@@ -367,17 +373,17 @@ namespace Cute_Pazzle
             }
             else
             {
-                image = null;
+               // image = null;
                 musicPictureBox.Image = Properties.Resources.music;
                 player.Play();
                 pauseClickCount++;
             }
         }
 
-        static int nextSongClickCount = 0;
-        private void nextSongPictureBox_Click(object sender, EventArgs e)
+        private int nextSongClickCount = 0;
+        private void nextSongPictureBox_Click(object sender, EventArgs e)//смена песни
         {
-            switch (nextSongClickCount % 3)
+            switch (nextSongClickCount % 2)
             {
                 case 1:
                     player.Stop();
@@ -394,5 +400,9 @@ namespace Cute_Pazzle
             }
         }
 
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            Reset();
+        }
     }
 }

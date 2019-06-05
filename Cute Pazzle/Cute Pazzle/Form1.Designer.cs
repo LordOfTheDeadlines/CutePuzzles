@@ -49,6 +49,8 @@
             this.nextSongPictureBox = new System.Windows.Forms.PictureBox();
             this.musicPictureBox = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.resetButton = new System.Windows.Forms.Button();
+            this.timeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.levels)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.timerPictureBox)).BeginInit();
@@ -202,7 +204,7 @@
             // timerPictureBox
             // 
             this.timerPictureBox.Image = global::Cute_Pazzle.Properties.Resources.timer4;
-            this.timerPictureBox.Location = new System.Drawing.Point(668, 255);
+            this.timerPictureBox.Location = new System.Drawing.Point(655, 242);
             this.timerPictureBox.Name = "timerPictureBox";
             this.timerPictureBox.Size = new System.Drawing.Size(203, 187);
             this.timerPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -241,12 +243,34 @@
             this.pictureBox2.TabIndex = 9;
             this.pictureBox2.TabStop = false;
             // 
+            // resetButton
+            // 
+            this.resetButton.BackColor = System.Drawing.Color.LightCyan;
+            this.resetButton.Location = new System.Drawing.Point(776, 535);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(75, 23);
+            this.resetButton.TabIndex = 21;
+            this.resetButton.Text = "Заново";
+            this.resetButton.UseVisualStyleBackColor = false;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
+            // 
+            // timeLabel
+            // 
+            this.timeLabel.AutoSize = true;
+            this.timeLabel.Location = new System.Drawing.Point(806, 403);
+            this.timeLabel.Name = "timeLabel";
+            this.timeLabel.Size = new System.Drawing.Size(46, 17);
+            this.timeLabel.TabIndex = 22;
+            this.timeLabel.Text = "label6";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(1062, 623);
+            this.Controls.Add(this.timeLabel);
+            this.Controls.Add(this.resetButton);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.gallaryLinkLabel);
             this.Controls.Add(this.timerPictureBox);
@@ -299,6 +323,8 @@
         private System.Windows.Forms.PictureBox timerPictureBox;
         private System.Windows.Forms.ListBox gallaryListBox;
         private System.Windows.Forms.LinkLabel gallaryLinkLabel;
+        private System.Windows.Forms.Button resetButton;
+        private System.Windows.Forms.Label timeLabel;
     }
 }
 
