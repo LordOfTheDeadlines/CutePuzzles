@@ -1,0 +1,24 @@
+c:\users\acer\documents\visual studio 2015\Projects\Cute Pazzle\Cute Pazzle\bin\Debug\Cute Pazzle.exe.config
+c:\users\acer\documents\visual studio 2015\Projects\Cute Pazzle\Cute Pazzle\bin\Debug\Cute Pazzle.exe
+c:\users\acer\documents\visual studio 2015\Projects\Cute Pazzle\Cute Pazzle\bin\Debug\Cute Pazzle.pdb
+c:\users\acer\documents\visual studio 2015\Projects\Cute Pazzle\Cute Pazzle\obj\Debug\Cute_Pazzle.Form1.resources
+c:\users\acer\documents\visual studio 2015\Projects\Cute Pazzle\Cute Pazzle\obj\Debug\Cute_Pazzle.Properties.Resources.resources
+c:\users\acer\documents\visual studio 2015\Projects\Cute Pazzle\Cute Pazzle\obj\Debug\Cute Pazzle.csproj.GenerateResource.Cache
+c:\users\acer\documents\visual studio 2015\Projects\Cute Pazzle\Cute Pazzle\obj\Debug\Cute Pazzle.exe
+c:\users\acer\documents\visual studio 2015\Projects\Cute Pazzle\Cute Pazzle\obj\Debug\Cute Pazzle.pdb
+c:\users\acer\documents\visual studio 2015\Projects\Cute Pazzle\Cute Pazzle\obj\Debug\Cute Pazzle.csprojResolveAssemblyReference.cache
+C:\Users\Acer\Source\Repos\LordOfTheDeadlines\CutePuzzles\Cute Pazzle\Cute Pazzle\bin\Debug\Cute Pazzle.exe.config
+C:\Users\Acer\Source\Repos\LordOfTheDeadlines\CutePuzzles\Cute Pazzle\Cute Pazzle\obj\Debug\Cute Pazzle.exe
+C:\Users\Acer\Source\Repos\LordOfTheDeadlines\CutePuzzles\Cute Pazzle\Cute Pazzle\obj\Debug\Cute Pazzle.pdb
+C:\Users\Acer\source\repos\LordOfTheDeadlines\CutePuzzles\Cute Pazzle\Cute Pazzle\obj\Debug\Cute Pazzle.csprojResolveAssemblyReference.cache
+C:\Users\Acer\source\repos\LordOfTheDeadlines\CutePuzzles\Cute Pazzle\Cute Pazzle\obj\Debug\Cute_Pazzle.Form1.resources
+C:\Users\Acer\source\repos\LordOfTheDeadlines\CutePuzzles\Cute Pazzle\Cute Pazzle\obj\Debug\Cute_Pazzle.GameOverForm.resources
+C:\Users\Acer\source\repos\LordOfTheDeadlines\CutePuzzles\Cute Pazzle\Cute Pazzle\obj\Debug\Cute Pazzle.csproj.GenerateResource.Cache
+C:\Users\Acer\source\repos\LordOfTheDeadlines\CutePuzzles\Cute Pazzle\Cute Pazzle\obj\Debug\Cute_Pazzle.Properties.Resources.resources
+C:\Users\Acer\source\repos\LordOfTheDeadlines\CutePuzzles\Cute Pazzle\Cute Pazzle\bin\Debug\Resources\sad_owl.jpg
+C:\Users\Acer\source\repos\LordOfTheDeadlines\CutePuzzles\Cute Pazzle\Cute Pazzle\bin\Debug\Cute Pazzle.exe
+C:\Users\Acer\source\repos\LordOfTheDeadlines\CutePuzzles\Cute Pazzle\Cute Pazzle\bin\Debug\Cute Pazzle.pdb
+C:\Users\Acer\source\repos\LordOfTheDeadlines\CutePuzzles\Cute Pazzle\Cute Pazzle\obj\Debug\Cute_Pazzle.YouWinForm.resources
+C:\Users\Acer\source\repos\LordOfTheDeadlines\CutePuzzles\Cute Pazzle\Cute Pazzle\bin\Debug\Resources\sound1.wav
+C:\Users\Acer\source\repos\LordOfTheDeadlines\CutePuzzles\Cute Pazzle\Cute Pazzle\bin\Debug\Resources\sound2.wav
+C:\Users\Acer\source\repos\LordOfTheDeadlines\CutePuzzles\Cute Pazzle\Cute Pazzle\bin\Debug\Resources\oaoaoaoa.wav
